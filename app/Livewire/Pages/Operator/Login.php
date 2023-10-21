@@ -26,11 +26,11 @@ class Login extends Component
                 return redirect(route('rektor.dashboard'));
             } else if (auth()->user()->roles == 2) {
                 session()->flash('message', "You have been successfully login.");
-                return redirect(route('operator.dashboard'));
+                return redirect(route('dashboard'));
             }
         } else {
             session()->flash('error', 'email and password are wrong.');
-            return redirect(route('operator.login'));
+            return redirect(route('login'));
         }
     }
     public function render()

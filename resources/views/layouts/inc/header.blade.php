@@ -5,7 +5,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <h1 class="navbar-brand navbar-brand-autodark">
-            <a href="{{ route('operator.dashboard') }}">
+            <a href="{{ route('dashboard') }}">
                 <img src="{{ asset('assets/img/logoUPB.png') }}" width="50" height="50" alt="Tabler">
             </a>
         </h1>
@@ -14,8 +14,8 @@
                 @include('layouts.inc.rektor.menu')
             @elseif (auth()->user()->roles == 2)
                 <ul class="navbar-nav pt-lg-3">
-                    <li class="nav-item {{ request()->routeIs('operator.dashboard') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('operator.dashboard') }} ">
+                    <li class="nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('dashboard') }} ">
                             <span class="nav-link-title">
                                 Dasbor
                             </span>

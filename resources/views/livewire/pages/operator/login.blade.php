@@ -1,4 +1,4 @@
-@section('pageTitle', 'Login Operator')
+@section('pageTitle', 'Halaman Masuk')
 <div>
     <div class="row g-0 flex-fill">
         <div class="col-12 col-lg-6 col-xl-4 border-top-wide border-primary d-flex flex-column justify-content-center">
