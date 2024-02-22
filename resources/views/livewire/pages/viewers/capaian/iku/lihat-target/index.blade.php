@@ -24,14 +24,14 @@
         </div>
         <div class="card mt-3">
             <div class="table-responsive">
-                <table class="table table-vcenter card-table table-striped">
+                <table class="table table-bordered card-table table-striped">
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Nama Indikator</th>
                             <th>Satuan</th>
                             <th>Target Fakultas</th>
-                            <th class="w-1">Isi Target</th>
+                            <th class="w-1">Capai Target</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,12 +51,6 @@
                                 <td class="text-muted">
                                     {{ $fill['fill_target'] }}
                                 </td>
-                                {{-- <td class="text-muted">
-                                    <input type="number" step="0.1"
-                                        wire:model="fillTargets.{{ $key }}.fill_target"
-                                        value="{{ isset($fill['fill_target']) ? $fill['fill_target'] : '' }}"
-                                        inputmode="decimal" class="form-control" min="0">
-                                </td> --}}
                             </tr>
                         @endforeach
                     </tbody>

@@ -8,7 +8,7 @@
         </div>
         <div class="card">
             <div class="table-responsive">
-                <table class="table table-vcenter card-table table-striped">
+                <table class="table table-bordered card-table table-striped">
                     <thead>
                         <tr>
                             <th>Tahun</th>

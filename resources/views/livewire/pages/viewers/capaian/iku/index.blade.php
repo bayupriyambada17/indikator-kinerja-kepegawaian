@@ -8,7 +8,7 @@
         </div>
         <div class="card">
             <div class="table-responsive">
-                <table class="table table-vcenter card-table table-striped">
+                <table class="table table-bordered card-table table-striped">
                     <thead>
                         <tr>
                             <th>Tahun</th>
@@ -36,7 +36,7 @@
                                     <a href="{{ route('view.capaian.iku.target', $item->year) }}"
                                         class="btn btn-primary">Lihat Target</a>
                                     <a href="{{ route('view.capaian.iku.capaian', $item->year) }}"
-                                        class="btn btn-warning">Lihat Capaian IKU</a>
+                                        class="btn btn-warning">Lihat Capaian</a>
                                 </td>
                             </tr>
                         @endforeach
