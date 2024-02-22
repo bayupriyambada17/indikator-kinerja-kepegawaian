@@ -32,5 +32,11 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
             'roles' => 3 // fakultas
         ]);
+        User::factory()->create([
+            'name' => 'Viewers',
+            'email' => 'viewers@pelitabangsa.com',
+            'password' => Hash::make('password'),
+            'roles' => 4 // view
+        ]);
     }
 }

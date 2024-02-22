@@ -13,4 +13,5 @@ Route::middleware(['guest'])->group(function () {
 });
 
 require 'links/operator.php';
+require 'links/viewers.php';
 require 'links/rektor.php';

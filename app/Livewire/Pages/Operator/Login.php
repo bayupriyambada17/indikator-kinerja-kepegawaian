@@ -27,6 +27,9 @@ class Login extends Component
             } else if (auth()->user()->roles == 2) {
                 session()->flash('message', "You have been successfully login.");
                 return redirect(route('dashboard'));
+            } else if (auth()->user()->roles == 4) {
+                session()->flash('message', "You have been successfully login.");
+                return redirect(route('view.dashboard'));
             }
         } else {
             session()->flash('message', 'email and password are wrong.');

@@ -26,6 +26,8 @@ class RedirectIfAuthenticated
                     return redirect()->route('rektor.dashboard');
                 } elseif (auth()->user()->roles == 2) {
                     return redirect()->route('dashboard');
+                } else if (auth()->user()->roles == 4) {
+                    return redirect()->route('viewers.dashboard');
                 }
                 // return redirect(RouteServiceProvider::HOME);
             }
