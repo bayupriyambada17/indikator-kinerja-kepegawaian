@@ -28,7 +28,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['auth', 'roles:2'])->group(function () {
-    Route::get("/dashboard", Dashboard::class)->middleware('roles:2')->name('dashboard');
+    Route::get("/dashboard", Dashboard::class)->name('dashboard');
+
     Route::prefix('capaian-target-restra')->group(function () {
         Route::get("", CapaianRestra::class)->name('capaian.restra');
         Route::get("/{year}/isi-target", IsiTarget::class)->name('capaian.restra.isi-target');

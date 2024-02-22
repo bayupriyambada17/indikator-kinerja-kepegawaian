@@ -1,6 +1,6 @@
 @section('pageTitle', 'Edit Indikator Kinerja')
 <div>
-    <a href="{{ route('capaian.ikp') }}" class="btn btn-info mb-3">Kembali</a>
+    <a href="{{ route('capaian.indikator') }}" class="btn btn-info mb-3">Kembali</a>
     <div class="row row-deck row-cards">
         <div class="col-12">
             <div class="card">

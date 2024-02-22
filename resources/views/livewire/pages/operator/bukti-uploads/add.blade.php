@@ -12,7 +12,7 @@
             </div>
         @endif
     </div>
-    <a href="{{ route('operator.bukti-upload') }}" class="btn btn-info mb-3">Kembali</a>
+    <a href="{{ route('bukti-upload') }}" class="btn btn-info mb-3">Kembali</a>
     <div class="row row-deck row-cards">
         <div class="col-12">
             <div class="card">

@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class CapaianIkp extends Component
 {
-    public $pageTitle = 'Capaian & Target IKP';
+    public $pageTitle = 'Capaian & Target IKU';
     public function render()
     {
         $years = Year::withCount('fillTargetIku')->get();

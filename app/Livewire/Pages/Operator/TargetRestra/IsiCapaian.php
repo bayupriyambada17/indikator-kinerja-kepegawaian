@@ -20,9 +20,9 @@ class IsiCapaian extends Component
     public $bukti_upload_id;
     public $file_upload;
 
-    public $selectedFillIsiCapaian = null; // Properti untuk menyimpan data yang akan ditampilkan di modal
-    public $selectedYearsId; // Properti untuk menyimpan data yang akan ditampilkan di modal
-    public $selectedIndikatorId; // Properti untuk menyimpan data yang akan ditampilkan di modal
+    public $selectedFillIsiCapaian = null;
+    public $selectedYearsId;
+    public $selectedIndikatorId;
 
     public $fillTargets;
     public $comment;
@@ -41,7 +41,7 @@ class IsiCapaian extends Component
     public function mount($year)
     {
         $this->buktiUploads = BuktiUpload::get();
-        $this->pageTitle = 'Target Restra & Capaian IKP: ' . $year;
+        $this->pageTitle = 'Target Restra & Capaian IKU: ' . $year;
         $this->year = Year::where("year", $year)->with(["fillTarget", 'capaianRetraUpload.bukti:id,name'])->firstOrFail();
         $this->indicators = Indikator::with(["unit:id,name", "fillTarget" => function ($query) {
             $query->where('years_id', $this->year->id);

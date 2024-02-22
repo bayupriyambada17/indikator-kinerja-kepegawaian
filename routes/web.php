@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/', function () {
-        return redirect(route('operator.login'));
+        return redirect(route('login'));
     })->name('redirect');
-    Route::get("/login", Login::class)->name('operator.login');
+    Route::get("/login", Login::class)->name('login');
 });
 
 require 'links/operator.php';

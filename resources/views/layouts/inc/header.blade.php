@@ -6,7 +6,7 @@
         </button>
         <h1 class="navbar-brand navbar-brand-autodark">
             <a href="{{ route('dashboard') }}">
-                <img src="{{ asset('assets/img/logoUPB.png') }}" width="50" height="50" alt="Tabler">
+                {{-- <img src="{{ asset('assets/img/logoUPB.png') }}" width="50" height="50" alt="Tabler"> --}}
             </a>
         </h1>
         <div class="collapse navbar-collapse" id="sidebar-menu">

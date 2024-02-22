@@ -31,7 +31,7 @@ class Edit extends Component
             'year' => $this->year
         ]);
 
-        session()->flash('message', 'Tahun Kinerja berhasil di perbaharui!');
+        session()->flash('message', 'Tahun berhasil di perbaharui!');
         return redirect(route('year'));
     }
     public function render()

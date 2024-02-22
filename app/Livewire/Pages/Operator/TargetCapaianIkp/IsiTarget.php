@@ -18,7 +18,7 @@ class IsiTarget extends Component
 
     public function mount($year)
     {
-        $this->pageTitle = 'Isi Target Capaian IKP: ' . $year;
+        $this->pageTitle = 'Isi Target Capaian IKU: ' . $year;
         $this->year = Year::where("year", $year)->with("fillTarget")->firstOrFail();
         $this->indicators = CapaianIndikatorIkp::with(["unit:id,name", "fillTarget" => function ($query) {
             $query->where('years_id', $this->year->id);

@@ -15,7 +15,7 @@ class Login extends Component
     }
     public function login()
     {
-        $validatedDate = $this->validate([
+        $this->validate([
             'email' => 'required|email',
             'password' => 'required|min:6',
         ]);
@@ -29,7 +29,7 @@ class Login extends Component
                 return redirect(route('dashboard'));
             }
         } else {
-            session()->flash('error', 'email and password are wrong.');
+            session()->flash('message', 'email and password are wrong.');
             return redirect(route('login'));
         }
     }

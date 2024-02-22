@@ -43,7 +43,7 @@ class IsiTarget extends Component
     {
 
         foreach ($this->fillTargets as $key => $fill) {
-            $isiTarget = ModelsIsiTarget::updateOrInsert(
+            ModelsIsiTarget::updateOrInsert(
                 ['years_id' => $this->year->id, 'indikator_id' => $fill['indikator_id']],
                 ['fill_target' => $fill['fill_target'], 'created_at' => now(), 'updated_at' => now()],
             );

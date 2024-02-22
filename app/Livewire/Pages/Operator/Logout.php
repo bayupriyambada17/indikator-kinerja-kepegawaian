@@ -10,9 +10,7 @@ class Logout extends Component
     public function logout()
     {
         Auth::logout();
-        // dd('tet');
-        // auth()->logout();
-        return redirect(route('operator.login'));
+        return redirect(route('login'));
     }
     public function render()
     {

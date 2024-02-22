@@ -45,7 +45,7 @@ class IsiCapaian extends Component
     public function mount($year)
     {
         $this->buktiUploads = BuktiUpload::get();
-        $this->pageTitle = 'Target Isi Capaian IKP: ' . $year;
+        $this->pageTitle = 'Target Isi Capaian IKU: ' . $year;
         $this->year = Year::where("year", $year)->with(["fillTarget", 'capaianIkpUpload.bukti:id,name'])->firstOrFail();
         $this->indicators = CapaianIndikatorIkp::with(["unit:id,name", "fillTarget" => function ($query) {
             $query->where('years_id', $this->year->id);

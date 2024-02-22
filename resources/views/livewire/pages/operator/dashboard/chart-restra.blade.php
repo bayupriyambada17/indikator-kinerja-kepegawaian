@@ -1,7 +1,0 @@
-<div>
-    <div class="card">
-        <div class="card-body">
-            <canvas id="myChart"></canvas>
-        </div>
-    </div>
-</div>
