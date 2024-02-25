@@ -36,7 +36,7 @@
                                     <a href="{{ route('capaian.ikp.isi-target', $item->year) }}"
                                         class="btn btn-primary">Isi Target</a>
                                     <a href="{{ route('capaian.ikp.isi-capaian', $item->year) }}"
-                                        class="btn btn-warning">Isi Capaian IKU</a>
+                                        class="btn btn-warning">Isi Capaian</a>
                                 </td>
                             </tr>
                         @endforeach

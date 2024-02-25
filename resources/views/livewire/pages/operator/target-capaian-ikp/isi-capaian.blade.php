@@ -173,6 +173,13 @@
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
+                            <label class="form-label">Judul File </label>
+                            <input type="text" class="form-control" wire:model="judul_file" required>
+                            @error('judul_file')
+                                <span class="text-danger error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label required">Pilih Bukti Upload</label>
                             <select class="form-control" wire:model="bukti_upload_id" required>
                                 <option value="">Pilih Bukti Upload</option>
@@ -185,7 +192,7 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Upload Capaian Dokumen</label>
+                            <label class="form-label">Upload Capaian Dokumen (PDF)</label>
                             <input type="file" class="form-control" wire:model="file_upload" required>
                             @error('file_upload')
                                 <span class="text-danger error">{{ $message }}</span>
@@ -202,6 +209,7 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
+                                                <th>Judul File</th>
                                                 <th>Bukti Upload</th>
                                                 <th>Lampiran File</th>
                                                 <th>Waktu Upload</th>
@@ -214,10 +222,13 @@
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td class="text-secondary">
+                                                            {{ $i->judul_file }}
+                                                        </td>
+                                                        <td class="text-secondary">
                                                             {{ $i->bukti['name'] }}
                                                         </td>
                                                         <td class="text-secondary">
-                                                            <a href="{{ asset('storage/' . $i['file_upload']) }}"
+                                                            <a href="{{ asset('bukti_upload_iku/' . $i['file_upload']) }}"
                                                                 target="_blank" class="btn btn-primary btn-sm">Lihat
                                                                 Bukti Upload</a>
                                                         </td>

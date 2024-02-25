@@ -14,6 +14,14 @@ class Index extends Component
     public $indicators;
     public $fillIsiCapaian;
 
+    public $selectedYearsId;
+    public $selectedIndikatorId;
+    public $selectedYear;
+    public $selectedFillIsiCapaian;
+    public $bukti_upload_id;
+
+
+
     public function mount($year)
     {
         $this->pageTitle = 'Target Restra & Capaian IKU: ' . $year;
@@ -38,6 +46,16 @@ class Index extends Component
                 'isiCapaian' => $indicator->isiCapaian
             ];
         })->toArray();
+    }
+    public function prepareFindUpload($yearsId, $indikatorId)
+    {
+        $this->selectedYearsId = $yearsId;
+        $this->selectedIndikatorId = $indikatorId;
+        $this->selectedFillIsiCapaian = Indikator::with('capaianRetraUpload.bukti')->find($indikatorId);
+
+        if ($this->selectedFillIsiCapaian) {
+            $this->bukti_upload_id = $this->selectedFillIsiCapaian->fillTarget()->first()->bukti_upload_id ?? null;
+        }
     }
     public function render()
     {

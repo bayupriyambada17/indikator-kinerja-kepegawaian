@@ -6,8 +6,9 @@ use App\Models\Year;
 use Livewire\Component;
 use App\Models\Indikator;
 use App\Models\BuktiUpload;
-use App\Models\IsiCapaianRestra;
 use Livewire\WithFileUploads;
+use App\Models\IsiCapaianRestra;
+use Illuminate\Support\Facades\Storage;
 use App\Models\IsiTargetCapaianRetraUpload;
 
 class IsiCapaian extends Component
@@ -19,6 +20,7 @@ class IsiCapaian extends Component
     public $buktiUploads;
     public $bukti_upload_id;
     public $file_upload;
+    public $judul_file;
 
     public $selectedFillIsiCapaian = null;
     public $selectedYearsId;
@@ -42,7 +44,9 @@ class IsiCapaian extends Component
     {
         $this->buktiUploads = BuktiUpload::get();
         $this->pageTitle = 'Target Restra & Capaian IKU: ' . $year;
-        $this->year = Year::where("year", $year)->with(["fillTarget", 'capaianRetraUpload.bukti:id,name'])->firstOrFail();
+        $this->year = Year::where("year", $year)->with(["fillTarget", 'capaianRetraUpload.bukti' => function ($q) {
+            $q->orderBy('created_at', 'desc');
+        }])->firstOrFail();
         $this->indicators = Indikator::with(["unit:id,name", "fillTarget" => function ($query) {
             $query->where('years_id', $this->year->id);
         }, 'capaianRetraUpload.bukti', 'isiCapaian' => function ($q) {
@@ -72,7 +76,7 @@ class IsiCapaian extends Component
         $this->selectedFillIsiCapaian = Indikator::with('capaianRetraUpload.bukti')->find($indikatorId);
 
         if ($this->selectedFillIsiCapaian) {
-            $this->bukti_upload_id = $this->selectedFillIsiCapaian->fillTarget()->first()->bukti_upload_id;
+            $this->bukti_upload_id = $this->selectedFillIsiCapaian->fillTarget()->first()->bukti_upload_id ?? null;
         }
     }
 
@@ -80,7 +84,9 @@ class IsiCapaian extends Component
     {
         $this->selectedYearsId = $yearsId;
         $this->selectedIndikatorId = $indikatorId;
-        $this->selectedFillIsiCapaian = Indikator::with('capaianRetraUpload.bukti')->find($indikatorId);
+        $this->selectedFillIsiCapaian = Indikator::with('capaianRetraUpload.bukti', function ($q) {
+            $q->orderBy('created_at', 'desc');
+        })->find($indikatorId);
         if ($this->selectedFillIsiCapaian) {
             $this->bukti_upload_id = $this->selectedFillIsiCapaian->fillTarget()->first()->bukti_upload_id ?? null;
         }
@@ -88,17 +94,25 @@ class IsiCapaian extends Component
 
     public function createUpload()
     {
-
-        $this->validate([
-            'bukti_upload_id' => 'required',
-            'file_upload' => 'required|max:5024|mimes:png,jpg,docx,doc,pdf,jpeg'
+        $this->validate(['bukti_upload_id' => 'required', 'file_upload' => 'required|max:2048|mimes:pdf',
+            'judul_file' => 'required|min:1'
+        ], [
+            'bukti_upload_id.required' => 'Bukti upload harus dipilih',
+            'file_upload.required' => 'File upload harus dipilih',
+            'file_upload.max' => 'File upload maksimal 2 MB',
+            'file_upload.mimes' => 'File upload harus PDF',
+            'judul_file.required' => 'Judul file harus diisi',
         ]);
+
+        $file_name = $this->file_upload->hashName();
+        Storage::disk('public')->putFileAs('bukti_upload_restra', $this->file_upload, $file_name);
 
         IsiTargetCapaianRetraUpload::create([
             'years_id' => $this->selectedYearsId,
             'indikator_id' => $this->selectedIndikatorId,
             'bukti_upload_id' => $this->bukti_upload_id,
-            'file_upload' => $this->file_upload->store('bukti', 'public')
+            'judul_file' => $this->judul_file,
+            'file_upload' => $file_name
         ]);
 
         $this->resetFieldsForm();
@@ -162,8 +176,8 @@ class IsiCapaian extends Component
     public function destroyUpload($buktiUploadId)
     {
         $buktiUploadId = IsiTargetCapaianRetraUpload::findOrFail($buktiUploadId);
-        if (file_exists(public_path('storage/' . $buktiUploadId->file_upload))) {
-            unlink(public_path('storage/' . $buktiUploadId->file_upload));
+        if (file_exists(public_path('bukti_upload_restra/' . $buktiUploadId->file_upload))) {
+            unlink(public_path('bukti_upload_restra/' . $buktiUploadId->file_upload));
         }
         $buktiUploadId->delete();
         session()->flash('message', 'Berhasil menghapus data ini.');

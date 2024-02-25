@@ -6,10 +6,11 @@ use App\Models\Year;
 use Livewire\Component;
 use App\Models\Indikator;
 use App\Models\BuktiUpload;
+use App\Models\IsiCapaianIkp;
 use Livewire\WithFileUploads;
 use App\Models\IsiCapaianRestra;
 use App\Models\CapaianIndikatorIkp;
-use App\Models\IsiCapaianIkp;
+use Illuminate\Support\Facades\Storage;
 use App\Models\IsiTargetCapaianIkpUpload;
 use App\Models\IsiTargetCapaianRetraUpload;
 
@@ -22,6 +23,7 @@ class IsiCapaian extends Component
     public $buktiUploads;
     public $bukti_upload_id;
     public $file_upload;
+    public $judul_file;
 
     public $selectedFillIsiCapaian = null; // Properti untuk menyimpan data yang akan ditampilkan di modal
     public $selectedYearsId; // Properti untuk menyimpan data yang akan ditampilkan di modal
@@ -46,7 +48,7 @@ class IsiCapaian extends Component
     {
         $this->buktiUploads = BuktiUpload::get();
         $this->pageTitle = 'Target Isi Capaian IKU: ' . $year;
-        $this->year = Year::where("year", $year)->with(["fillTarget", 'capaianIkpUpload.bukti:id,name'])->firstOrFail();
+        $this->year = Year::where("year", $year)->with(["fillTarget", 'capaianIkpUpload.bukti'])->firstOrFail();
         $this->indicators = CapaianIndikatorIkp::with(["unit:id,name", "fillTarget" => function ($query) {
             $query->where('years_id', $this->year->id);
         }, 'capaianIkpUpload', 'isiCapaian' => function ($q) {
@@ -67,6 +69,8 @@ class IsiCapaian extends Component
                 'isiCapaian' => $indicator->isiCapaian
             ];
         })->toArray();
+
+        // dd($this->fillIsiCapaian);
     }
 
     public function prepareFindUpload($yearsId, $indikatorId)
@@ -93,15 +97,25 @@ class IsiCapaian extends Component
     public function createUpload()
     {
         $this->validate([
-            'bukti_upload_id' => 'required',
-            'file_upload' => 'required|max:5024|mimes:png,jpg,docx,doc,pdf,jpeg'
+            'bukti_upload_id' => 'required', 'file_upload' => 'required|max:5024|mimes:pdf',
+            'judul_file' => 'required|min:1'
+        ], [
+            'bukti_upload_id.required' => 'Bukti upload harus dipilih',
+            'file_upload.required' => 'File upload harus dipilih',
+            'file_upload.max' => 'File upload maksimal 5 MB',
+            'file_upload.mimes' => 'File upload harus berupa PDF',
+            'judul_file.required' => 'Judul file harus diisi',
         ]);
+
+        $file_name = $this->file_upload->hashName();
+        Storage::disk('public')->putFileAs('bukti_upload_iku', $this->file_upload, $file_name);
 
         IsiTargetCapaianIkpUpload::create([
             'years_id' => $this->selectedYearsId,
+            'judul_file' => $this->judul_file,
             'capaian_indikator_ikp_id' => $this->selectedIndikatorId,
             'bukti_upload_id' => $this->bukti_upload_id,
-            'file_upload' => $this->file_upload->store('bukti_ikp', 'public')
+            'file_upload' => $file_name
         ]);
 
         $this->resetFieldsForm();
@@ -165,8 +179,8 @@ class IsiCapaian extends Component
     public function destroyUpload($buktiUploadId)
     {
         $buktiUploadId = IsiTargetCapaianIkpUpload::findOrFail($buktiUploadId);
-        if (file_exists(public_path('storage/' . $buktiUploadId->file_upload))) {
-            unlink(public_path('storage/' . $buktiUploadId->file_upload));
+        if (file_exists(public_path('bukti_upload_iku/' . $buktiUploadId->file_upload))) {
+            unlink(public_path('bukti_upload_iku/' . $buktiUploadId->file_upload));
         }
         $buktiUploadId->delete();
         session()->flash('message', 'Berhasil menghapus data ini.');

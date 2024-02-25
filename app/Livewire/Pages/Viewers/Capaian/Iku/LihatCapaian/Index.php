@@ -15,6 +15,11 @@ class Index extends Component
     public $fillIsiCapaian;
     public $buktiUploads;
 
+    public $selectedYearsId;
+    public $selectedIndikatorId;
+    public $selectedFillIsiCapaian = null;
+    public $bukti_upload_id;
+
     public function mount($year)
     {
         $this->buktiUploads = BuktiUpload::get();
@@ -40,6 +45,18 @@ class Index extends Component
                 'isiCapaian' => $indicator->isiCapaian
             ];
         })->toArray();
+
+        // dd($this->fillIsiCapaian);
+    }
+
+    public function prepareFindUpload($yearsId, $indikatorId)
+    {
+        $this->selectedYearsId = $yearsId;
+        $this->selectedIndikatorId = $indikatorId;
+        $this->selectedFillIsiCapaian = CapaianIndikatorIkp::with('capaianIkpUpload.bukti')->find($indikatorId);
+        if ($this->selectedFillIsiCapaian) {
+            $this->bukti_upload_id = $this->selectedFillIsiCapaian->fillTarget()->first()->bukti_upload_id ?? null;
+        }
     }
     public function render()
     {

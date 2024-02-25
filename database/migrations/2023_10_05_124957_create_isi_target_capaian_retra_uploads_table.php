@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('years_id')->constrained('years')->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->string('judul_file');
             $table->foreignId('indikator_id')->constrained('indikator')->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->foreignId('bukti_upload_id')->constrained('bukti_upload')->onUpdate('cascade')
