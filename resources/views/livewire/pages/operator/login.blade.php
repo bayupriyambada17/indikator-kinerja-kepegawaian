@@ -13,9 +13,8 @@
             </div>
             <div class="container container-tight my-5 px-lg-5">
                 <div class="text-center mb-4">
-                    <a href="{{ route("login") }}" class="navbar-brand navbar-brand-autodark"></a>
-                    {{-- <a href="{{ route("login") }}" class="navbar-brand navbar-brand-autodark"><img
-                            src="{{ asset('assets/img/logoUPB.png') }}" height="36" alt=""></a> --}}
+                    <a href="{{ route("login") }}" class="navbar-brand navbar-brand-autodark"><img
+                            src="{{ asset('assets/img/logoUPB.png') }}" height="36" alt=""></a>
                 </div>
                 <h2 class="h3 text-center mb-3">
                     Masuk dengan akun anda!
@@ -50,10 +49,10 @@
         </div>
         <div class="col-12 col-lg-6 col-xl-8 d-none d-lg-block">
             <!-- Photo -->
-            <div class="bg-cover h-100 min-vh-100" style="background-color:black;">
-            </div>
-            {{-- <div class="bg-cover h-100 min-vh-100" style="background-image: url({{ asset('assets/img/banner.webp') }})">
+            {{-- <div class="bg-cover h-100 min-vh-100" style="background-color:black;">
             </div> --}}
+            <div class="bg-cover h-100 min-vh-100" style="background-image: url({{ asset('assets/img/banner.webp') }})">
+            </div>
         </div>
     </div>
 </div>
