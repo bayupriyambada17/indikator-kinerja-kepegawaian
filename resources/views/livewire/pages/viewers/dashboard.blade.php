@@ -38,7 +38,7 @@
                             </td>
                             <td class="text-muted">
                                 <a href="{{ asset('storage/' . $lakip->docs) }}" target="_blank"
-                                    class="btn btn-warning btn-sm">Lihat Dokumen</a>
+                                    class="btn btn-outlien-warning btn-sm">Lihat Dokumen</a>
                             </td>
                         </tr>
                     @endforeach --}}

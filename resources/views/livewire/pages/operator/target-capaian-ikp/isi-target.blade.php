@@ -23,8 +23,8 @@
             <div class="col-auto ms-auto d-print-none">
                 <div class="btn-list">
                     <span class="d-none d-sm-inline">
-                        <a href="{{ route('capaian.ikp') }}" class="btn btn-warning">Kembali</a>
-                        <button type="button" wire:click.prevent="saveData()" class="btn btn-primary">Simpan
+                        <a href="{{ route('capaian.ikp') }}" class="btn btn-outline-warning">Kembali</a>
+                        <button type="button" wire:click.prevent="saveData()" class="btn btn-outline-primary">Simpan
                             Data</button>
                     </span>
                 </div>

@@ -1,6 +1,6 @@
 @section('pageTitle', 'Edit Indikator Kinerja')
 <div>
-    <a href="{{ route('indikator') }}" class="btn btn-info mb-3">Kembali</a>
+    <a href="{{ route('indikator') }}" class="btn btn-outline-info mb-3">Kembali</a>
     <div class="row row-deck row-cards">
         <div class="col-12">
             <div class="card">
@@ -42,7 +42,7 @@
                                 @enderror
                             </div>
                             <div>
-                                <button type="submit" class="btn btn-primary">Perbaharui
+                                <button type="submit" class="btn btn-outline-primary">Perbaharui
                                     Data</button>
                             </div>
                         </div>

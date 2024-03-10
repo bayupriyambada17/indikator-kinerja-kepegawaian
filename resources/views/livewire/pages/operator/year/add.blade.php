@@ -7,7 +7,7 @@
             </div>
         @endif
     </div>
-    <a href="{{ route('year') }}" class="btn btn-info mb-3">Kembali</a>
+    <a href="{{ route('year') }}" class="btn btn-outline-info mb-3">Kembali</a>
     <div class="row row-deck row-cards">
         <div class="col-12">
             <div class="card">

@@ -17,14 +17,14 @@
             <div class="col-auto ms-auto d-print-none">
                 <div class="btn-list">
                     <span class="d-none d-sm-inline">
-                        <a href="{{ route('view.capaian.iku') }}" class="btn btn-warning">Kembali</a>
+                        <a href="{{ route('view.capaian.iku') }}" class="btn btn-outline-warning">Kembali</a>
                     </span>
                 </div>
             </div>
         </div>
         <div class="card mt-3">
             <div class="table-responsive">
-                <table class="table table-bordered card-table table-striped">
+                <table class="table table-bordered table-vcenter text-center card-table table-striped">
                     <thead>
                         <tr>
                             <th>#</th>

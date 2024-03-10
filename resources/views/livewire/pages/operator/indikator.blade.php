@@ -13,7 +13,7 @@
                 </div>
             @endif
         </div>
-        <a href="{{ route('indikator.add') }}" class="btn btn-primary mb-3">Tambah Data</a>
+        <a href="{{ route('indikator.add') }}" class="btn btn-outline-primary mb-3">Tambah Data</a>
         <div class="card">
             <div class="table-responsive">
                 <table class="table table-vcenter card-table table-striped">
@@ -42,9 +42,9 @@
 
                                 <td class="d-flex gap-2">
                                     <a href="{{ route('indikator.edit', $indicator->id) }}"
-                                        class="btn btn-primary">Ubah</a>
+                                        class="btn btn-outline-primary">Ubah</a>
                                     <a href="#" wire:click.prevent="destroy({{ $indicator->id }})"
-                                        class="btn btn-warning">Hapus</a>
+                                        class="btn btn-outline-warning">Hapus</a>
                                 </td>
                             </tr>
                         @endforeach

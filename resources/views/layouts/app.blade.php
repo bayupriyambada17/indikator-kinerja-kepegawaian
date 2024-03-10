@@ -43,8 +43,13 @@
         </div>
     </div>
 
-    @livewireScripts
     <script src="{{ asset('assets/js/tabler.min.js') }}" defer></script>
+    <script src="{{ asset('assets/js/lucide.min.js') }}"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+    @livewireScripts
+
     @stack('javascript')
 </body>
 

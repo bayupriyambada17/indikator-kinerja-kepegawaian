@@ -15,21 +15,21 @@
         </div>
         <div class="card">
             <div class="table-responsive">
-                <table class="table table-vcenter card-table">
+                <table class="table table-vcenter table-bordered card-table text-center">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th colspan="1" style="width: 120%;">Indikator Kinerja {{ $year->year }}</th>
-                            <th style="width: 5%;">Target Dep</th>
-                            <th colspan="1" style="width: 120%;">Satuan</th>
-                            <th style="width: 5%;">Panduan</th>
+                            <th>Indikator Kinerja {{ $year->year }}</th>
+                            <th>Target Dep</th>
+                            <th>Satuan</th>
+                            <th>Panduan</th>
                             @if (auth()->user()->roles == 1)
-                                <th colspan="" style="width: 5%;">File Master</th>
+                                <th>File Master</th>
                             @endif
                             @if (auth()->user()->roles == 2)
-                                <th class="w-1">Capaian Dep</th>
+                                <th>Capaian Dep</th>
                             @endif
-                            <th style="width: 70%;">Komentar</th>
+                            <th>Komentar</th>
                             @if (auth()->user()->roles == 2)
                                 <th>Valid</th>
                             @endif
@@ -40,62 +40,38 @@
                         @foreach ($fillIsiCapaian as $key => $indicator)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td style=" width: 100%;">
+                                <td style=" width: 25%;">
                                     {{ $indicator['name'] }}
                                 </td>
-                                <td class="text-center">
+                                <td style="width: 3%" class="text-center">
                                     {{ $indicator['fill_target'] }}/{{ $indicator['faculty_targets'] }}
                                 </td>
-                                <td style="width: 30%" class="text-muted">
+                                <td style="width: 10%" class="text-muted">
                                     {{ $indicator['unit_name'] }}
                                 </td>
-                                <td class="text-muted">
-                                    <button class="btn btn-icon w-50 btn-info">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-info-small" width="24"
-                                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                            fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M12 9h.01"></path>
-                                            <path d="M11 12h1v4h1"></path>
-                                        </svg>
+                                <td class="text-muted" wire:ignore>
+                                    <button class="btn btn-outline-info w-100">
+                                        <i data-lucide="book-open-check" class="w-4 h-4"></i>
                                     </button>
                                 </td>
                                 @if (auth()->user()->roles == 1)
-                                    <td class="text-muted">
+                                    <td class="text-muted" wire:ignore>
                                         <button
                                             wire:click="file({{ $indicator['years_id'] }}, {{ $indicator['indikator_id'] }})"
-                                            type="button" class="btn w-100 btn-icon" data-bs-toggle="modal"
+                                            type="button" class="btn btn-outline-success w-100" data-bs-toggle="modal"
                                             data-bs-target="#modal-file">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="icon icon-tabler icon-tabler-book-2" width="24"
-                                                height="24" viewBox="0 0 24 24" stroke-width="2"
-                                                stroke="currentColor" fill="none" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M19 4v16h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12z"></path>
-                                                <path d="M19 16h-12a2 2 0 0 0 -2 2"></path>
-                                                <path d="M9 8h6"></path>
-                                            </svg>
+                                            <i data-lucide="upload" class="w-4 h-4"></i>
                                         </button>
                                     </td>
                                 @endif
                                 @if (auth()->user()->roles == 2)
-                                    <td class="d-flex gap-2 text-center">
+                                    <td class="d-flex gap-2 text-center" wire:ignore>
                                         <button
                                             wire:click="prepareFindUpload({{ $indicator['years_id'] }}, {{ $indicator['indikator_id'] }})"
                                             type="button" class="btn w-100 btn-icon" data-bs-toggle="modal"
                                             data-bs-target="#modal-report">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="icon icon-tabler icon-tabler-upload" width="24"
-                                                height="24" viewBox="0 0 24 24" stroke-width="2"
-                                                stroke="currentColor" fill="none" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
-                                                <path d="M7 9l5 -5l5 5"></path>
-                                                <path d="M12 4l0 12"></path>
-                                            </svg>
+                                            <i data-lucide="upload" class="w-4 h-4"></i>
+
                                         </button>
                                     </td>
                                 @endif
@@ -122,7 +98,7 @@
                                         @else
                                             <button
                                                 wire:click.prevent="validation({{ $indicator['years_id'] }}, {{ $indicator['indikator_id'] }})"
-                                                class="btn w-100 btn-icon btn-info gap-3">
+                                                class="btn w-100 btn-icon outline- gap-3">
                                                 <svg xmlns="http://www.w3.org/2000/svg"
                                                     class="icon icon-tabler icon-tabler-hand-click" width="24"
                                                     height="24" viewBox="0 0 24 24" stroke-width="2"
@@ -147,8 +123,8 @@
                                 @php
                                     $percentage = ($indicator['fill_target'] / $indicator['faculty_targets']) * 100;
                                 @endphp
-                                <td
-                                    style="width: 30%; text-align: center; @if ($percentage > 50) background-color: green; @else background-color: red; @endif color: whitesmoke;">
+                                <td style="width:3%; @if ($percentage > 50) background-color: green; @else background-color: red; @endif color: whitesmoke; text-align: center;"
+                                    class="text-center">
 
                                     {{ number_format(round($percentage, 1)) }}%
                                 </td>
@@ -167,8 +143,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Capaian Departemen {{ $year->year }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
@@ -204,7 +179,7 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="table-responsive">
-                                    <table class="table table-vcenter card-table">
+                                    <table class="table table-vcenter table-bordered card-table">
                                         <thead>
                                             <tr>
                                                 <th>#</th>

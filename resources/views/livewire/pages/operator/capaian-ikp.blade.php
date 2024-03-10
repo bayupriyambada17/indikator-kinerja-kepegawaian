@@ -34,9 +34,9 @@
 
                                 <td class="d-flex gap-2">
                                     <a href="{{ route('capaian.ikp.isi-target', $item->year) }}"
-                                        class="btn btn-primary">Isi Target</a>
+                                        class="btn btn-outline-primary">Isi Target</a>
                                     <a href="{{ route('capaian.ikp.isi-capaian', $item->year) }}"
-                                        class="btn btn-warning">Isi Capaian</a>
+                                        class="btn btn-outline-warning">Isi Capaian</a>
                                 </td>
                             </tr>
                         @endforeach

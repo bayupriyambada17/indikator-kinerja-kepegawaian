@@ -1,6 +1,6 @@
 @section('pageTitle', 'Edit Satuan Indikator Kinerja')
 <div>
-    <a href="{{ route('satuan.indikator') }}" class="btn btn-info mb-3">Kembali</a>
+    <a href="{{ route('satuan.indikator') }}" class="btn btn-outline-info mb-3">Kembali</a>
     <div class="row row-deck row-cards">
         <div class="col-12">
             <div class="card">

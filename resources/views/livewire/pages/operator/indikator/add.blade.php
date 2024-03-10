@@ -12,7 +12,7 @@
             </div>
         @endif
     </div>
-    <a href="{{ route('indikator') }}" class="btn btn-info mb-3">Kembali</a>
+    <a href="{{ route('indikator') }}" class="btn btn-outline-info mb-3">Kembali</a>
     <div class="row row-deck row-cards">
         <div class="col-12">
             <div class="card">
@@ -56,7 +56,7 @@
                             <div class="col-md-2">
                                 <div class="mb-3">
                                     <label class="form-label">Aksi</label>
-                                    <Button wire:click.prevent="add()" class="btn btn-primary">Tambah</Button>
+                                    <Button wire:click.prevent="add()" class="btn btn-outline-primary">Tambah</Button>
                                 </div>
                             </div>
 
@@ -99,14 +99,14 @@
                                 <div class="col-md-2">
                                     <div class="mb-3">
                                         <label class="form-label">Aksi</label>
-                                        <Button wire:click.prevent="add()" class="btn btn-primary">+</Button>
+                                        <Button wire:click.prevent="add()" class="btn btn-outline-primary">+</Button>
                                         <Button wire:click.prevent="remove({{ $key }})"
                                             class="btn btn-danger">-</Button>
                                     </div>
                                 </div>
                             @endforeach
                             <div>
-                                <button type="button" wire:click.prevent="store()" class="btn btn-primary">Simpan
+                                <button type="button" wire:click.prevent="store()" class="btn btn-outline-primary">Simpan
                                     Data</button>
                             </div>
                         </div>

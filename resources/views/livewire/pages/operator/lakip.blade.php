@@ -13,7 +13,7 @@
                 </div>
             @endif
         </div>
-        <a href="{{ route('lakip.add') }}" class="btn btn-primary mb-3">Tambah Data</a>
+        <a href="{{ route('lakip.add') }}" class="btn btn-outline-primary mb-3">Tambah Data</a>
         <div class="card">
             <div class="table-responsive">
                 <table class="table table-vcenter card-table table-striped">
@@ -39,17 +39,15 @@
                                 </td>
                                 <td class="text-muted">
                                     <a href="{{ asset('storage/' . $lakip->pdf) }}" target="_blank"
-                                        class="btn btn-primary btn-sm">Lihat Pdf</a>
+                                        class="btn btn-outline-primary btn-sm">Lihat Pdf</a>
                                 </td>
                                 <td class="text-muted">
                                     <a href="{{ asset('storage/' . $lakip->docs) }}" target="_blank"
-                                        class="btn btn-warning btn-sm">Docs</a>
+                                        class="btn btn-outline-warning btn-sm">Docs</a>
                                 </td>
                                 <td class="d-flex gap-2">
-                                    {{-- <a href="{{ route('indikator.edit', $lakip->id) }}"
-                                        class="btn btn-primary">Ubah</a> --}}
                                     <a href="#" wire:click.prevent="destroy({{ $lakip->id }})"
-                                        class="btn btn-warning">Hapus</a>
+                                        class="btn btn-outline-warning">Hapus</a>
                                 </td>
                             </tr>
                         @endforeach

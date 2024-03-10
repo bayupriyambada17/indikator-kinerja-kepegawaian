@@ -41,7 +41,7 @@
                                     {{ $indicator['unit_name'] }}
                                 </td>
                                 <td class="text-muted">
-                                    <button class="btn btn-icon w-50 btn-info">
+                                    <button class="btn btn-icon w-50 btn-outline-info">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             class="icon icon-tabler icon-tabler-info-small" width="24"
                                             height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"

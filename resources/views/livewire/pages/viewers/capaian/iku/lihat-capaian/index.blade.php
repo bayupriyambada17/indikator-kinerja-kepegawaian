@@ -8,14 +8,14 @@
         </div>
         <div class="card">
             <div class="table-responsive">
-                <table class="table table-bordered card-table">
+                <table class="table table-bordered card-table table-vcenter text-center">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th style="width: 70%;">Indikator Kinerja {{ $year->year }}</th>
+                            <th style="width: 30%;">Indikator Kinerja {{ $year->year }}</th>
                             <th style="width: 5%;">Target Dep</th>
-                            <th style="width: 120%;">Satuan</th>
-                            <th style="width: 120%;">Dokumen</th>
+                            <th style="width: 20%;">Satuan</th>
+                            <th style="width: 10%;">Dokumen</th>
                             <th style="width:80%;">Komentar</th>
                             <th class="w-1"></th>
                         </tr>
@@ -33,26 +33,18 @@
                                 <td class="text-muted">
                                     {{ $indicator['unit_name'] }}
                                 </td>
-                                <td class="d-flex gap-2 text-center">
+                                <td class="d-flex gap-2 text-center" wire:ignore>
                                     <button
                                         wire:click="prepareFindUpload({{ $indicator['years_id'] }}, {{ $indicator['indikator_id'] }})"
                                         type="button" class="btn w-100 btn-icon" data-bs-toggle="modal"
                                         data-bs-target="#modal-report">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-upload" width="24" height="24"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
-                                            <path d="M7 9l5 -5l5 5"></path>
-                                            <path d="M12 4l0 12"></path>
-                                        </svg>
+                                        <i data-lucide="file" class="h-4 w-4"></i>
                                     </button>
                                 </td>
                                 <td>
                                     <ul>
                                         @foreach ($indicator['isiCapaian'] as $isi)
-                                            <li>{{ $isi->comment }}</li>
+                                            {{ $isi->comment }}
                                         @endforeach
                                     </ul>
                                 </td>

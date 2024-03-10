@@ -34,11 +34,11 @@
                             </td>
                             <td class="text-muted">
                                 <a href="{{ asset('storage/' . $lakip->pdf) }}" target="_blank"
-                                    class="btn btn-primary btn-sm">Lihat Pdf</a>
+                                    class="btn btn-outline-primary btn-sm">Lihat Pdf</a>
                             </td>
                             <td class="text-muted">
                                 <a href="{{ asset('storage/' . $lakip->docs) }}" target="_blank"
-                                    class="btn btn-warning btn-sm">Lihat Dokumen</a>
+                                    class="btn btn-outline-warning btn-sm">Lihat Dokumen</a>
                             </td>
                         </tr>
                     @endforeach

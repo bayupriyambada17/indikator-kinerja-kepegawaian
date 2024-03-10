@@ -8,7 +8,7 @@
         </div>
         <div class="card">
             <div class="table-responsive">
-                <table class="table table-vcenter card-table table-striped">
+                <table class="table table-vcenter table-bordered card-table text-center">
                     <thead>
                         <tr>
                             <th>Tahun</th>
@@ -34,9 +34,9 @@
 
                                 <td class="d-flex gap-2">
                                     <a href="{{ route('capaian.restra.isi-target', $item->year) }}"
-                                        class="btn btn-primary">Isi Target</a>
+                                        class="btn btn-outline-primary">Isi Target</a>
                                     <a href="{{ route('capaian.restra.isi-capaian', $item->year) }}"
-                                        class="btn btn-warning">Isi Capaian</a>
+                                        class="btn btn-outline-warning">Isi Capaian</a>
                                 </td>
                             </tr>
                         @endforeach

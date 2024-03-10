@@ -12,7 +12,7 @@
             <h4>Halaman {{ $pageTitle }}</h4>
         </div>
     </div>
-    <a href="{{ route('lakip') }}" class="btn btn-info mb-3">Kembali</a>
+    <a href="{{ route('lakip') }}" class="btn btn-outline-info mb-3">Kembali</a>
     <div class="row row-deck row-cards">
         <div class="col-12">
             <div class="card">

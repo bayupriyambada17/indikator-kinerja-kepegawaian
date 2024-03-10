@@ -34,9 +34,9 @@
 
                                 <td class="d-flex gap-2">
                                     <a href="{{ route('rektor.capaian-iku.lihat-target', $item->year) }}"
-                                        class="btn btn-primary">Lihat Target</a>
+                                        class="btn btn-outline-primary">Lihat Target</a>
                                     <a href="{{ route('rektor.capaian-iku.lihat-capaian', $item->year) }}"
-                                        class="btn btn-warning">Lihat Capaian</a>
+                                        class="btn btn-outline-warning">Lihat Capaian</a>
                                 </td>
                             </tr>
                         @endforeach

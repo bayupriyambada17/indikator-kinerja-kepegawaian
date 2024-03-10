@@ -15,7 +15,7 @@
         </div>
         <div class="card">
             <div class="table-responsive">
-                <table class="table table-vcenter card-table">
+                <table class="table table-vcenter card-table table-bordered">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -50,15 +50,8 @@
                                     {{ $indicator['unit_name'] }}
                                 </td>
                                 <td class="text-muted">
-                                    <button class="btn btn-icon w-50 btn-info">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-info-small" width="24"
-                                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                            fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M12 9h.01"></path>
-                                            <path d="M11 12h1v4h1"></path>
-                                        </svg>
+                                    <button class="btn btn-icon w-50 btn-outline-info">
+                                        <i data-lucide="book-open-check"></i>
                                     </button>
                                 </td>
                                 @if (auth()->user()->roles == 1)
@@ -122,7 +115,7 @@
                                         @else
                                             <button
                                                 wire:click.prevent="validation({{ $indicator['years_id'] }}, {{ $indicator['indikator_id'] }})"
-                                                class="btn w-100 btn-icon btn-info gap-3">
+                                                class="btn w-100 btn-icon btn-outline-info gap-3">
                                                 <svg xmlns="http://www.w3.org/2000/svg"
                                                     class="icon icon-tabler icon-tabler-hand-click" width="24"
                                                     height="24" viewBox="0 0 24 24" stroke-width="2"
